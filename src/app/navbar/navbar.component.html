@@ -1,0 +1,48 @@
+<body>
+  <header>
+    <input type="checkbox" id="check" />
+    <label for="check">
+      <i class="fas fa-bars fa-2x menu"></i>
+    </label>
+
+    <i class="far fa-clock horario">
+      <span class="hora"> {{ date }} </span>
+    </i>
+
+    <nav>
+      <ul>
+        <li id="logo">
+        <img src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png">
+          <a href="index.html"> ESTACI.ONE </a>
+        </li>
+        <li>
+          <i class="fas fa-sign-in-alt"></i>
+          <a [routerLink]="['/entrada']"> Entrada </a>
+        </li>
+        <li>
+          <i class="fas fa-sign-out-alt"></i>
+          <a [routerLink]="['/saida']"> Saída </a>
+        </li>
+        <li>
+          <i class="fas fa-user-friends"></i>
+          <a [routerLink]="['/cliente']"> Clientes </a>
+        </li>
+        <li>
+        <i class="fas fa-car-side"></i>
+        <a [routerLink]="['/veiculo']"> Veículos </a>
+      </li>
+
+      <!--
+        <li>
+          <i class="fas fa-users"></i>
+          <a [routerLink]="['/integrantes']"> Integrantes </a>
+        </li>
+      -->
+        <li>
+          <i class="fa fa-window-close"></i>
+          <a [routerLink]="['/']"> Sair </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</body>

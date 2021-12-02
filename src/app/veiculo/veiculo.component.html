@@ -1,0 +1,203 @@
+<app-navbar> </app-navbar>
+
+<div class="titulo">
+  <h1>Cadastro de Veículos</h1>
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    Cadastrar
+  </button>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro de veículos</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form [formGroup]="form" method="POST">
+        <div class="modal-body">
+          <div class="form-group col-md-6">
+            <label for="placa" id="placa" name="placa"> Placa </label>
+            <input
+              type="text"
+              placeholder="XXX0000"
+              name="placa"
+              class="form-control"
+              id="placa"
+              formControlName="placa"
+            />
+
+            <label for="marca" class="form-label"> Marca </label>
+            <input
+              type="text"
+              class="form-control"
+              list="opcMarca"
+              id="marca"
+              name="marca"
+              placeholder="Pesquisar marca"
+              formControlName="marca"
+            />
+            <datalist id="opcMarca">
+              <option value="..OUTROS"></option>
+              <option value="ALFA ROMEO"></option>
+              <option value="AUDI"></option>
+              <option value="BENTLEY"></option>
+              <option value="BMW"></option>
+              <option value="BUGGY"></option>
+              <option value="CADILLAC"></option>
+              <option value="CHERY"></option>
+              <option value="CHEVROLET"></option>
+              <option value="CHRYSLER"></option>
+              <option value="CITROEN"></option>
+              <option value="CROSS LANDER"></option>
+              <option value="DAEWOO"></option>
+              <option value="DAIHATSU"></option>
+              <option value="DODGE"></option>
+              <option value="FERRARI"></option>
+              <option value="FIAT"></option>
+              <option value="FORD"></option>
+              <option value="GURGEL"></option>
+              <option value="HONDA"></option>
+              <option value="HYUNDAI"></option>
+              <option value="INFINITI"></option>
+              <option value="JAC"></option>
+              <option value="JEEP"></option>
+              <option value="KIA"></option>
+              <option value="LADA"></option>
+              <option value="LAND ROVER"></option>
+              <option value="LEXUS"></option>
+              <option value="LIFAN"></option>
+              <option value="MAZDA"></option>
+              <option value="MERCEDES-BENZ"></option>
+              <option value="MINI"></option>
+              <option value="MITSUBISHI"></option>
+              <option value="MIURA"></option>
+              <option value="NISSAN"></option>
+              <option value="PEUGEOT"></option>
+              <option value="PONTIAC"></option>
+              <option value="PORSCHE"></option>
+              <option value="PUMA"></option>
+              <option value="RENAULT"></option>
+              <option value="ROLLS-ROYCE"></option>
+              <option value="SEAT"></option>
+              <option value="SMART"></option>
+              <option value="SSANGYONG"></option>
+              <option value="SUBARU"></option>
+              <option value="SUZUKI"></option>
+              <option value="TOYOTA"></option>
+              <option value="TROLLER"></option>
+              <option value="VOLKSWAGEN"></option>
+              <option value="VOLVO"></option>
+            </datalist>
+
+            <label for="modelo"> Modelo </label>
+            <input
+              type="text"
+              placeholder="Inserir modelo do carro"
+              class="form-control"
+              id="modelo"
+              name="modelo"
+              formControlName="modelo"
+            />
+
+            <label for="cor" class="form-label"> Cor </label>
+            <input
+              type="text"
+              class="form-control"
+              list="opcCor"
+              id="cor"
+              name="cor"
+              placeholder="Cor do veículo"
+              formControlName="cor"
+            />
+            <datalist id="opcCor">
+              <option value="..Outros"></option>
+              <option value="Amarelo"></option>
+              <option value="Azul"></option>
+              <option value="Branco"></option>
+              <option value="Cinza"></option>
+              <option value="Marrom"></option>
+              <option value="Prata"></option>
+              <option value="Preto"></option>
+              <option value="Verde"></option>
+              <option value="Vermelho"></option>
+            </datalist>
+
+            <label for="clientes" class="form-label"> Cliente </label>
+            <input
+              class="form-control"
+              list="opcCliente"
+              id="cliente"
+              placeholder="Pesquisar Cliente"
+              name="clientes"
+            />
+
+            <datalist id="opcCliente">
+              <option *ngFor="let i of this.clientes">
+                {{ i.id }} | {{ i.nome }} - CPF: {{ i.cpf }}
+              </option>
+            </datalist>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-dismiss="modal"
+            id="cadastroCarro"
+          >
+            Salvar
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="lista-cadastro">
+  <table class="table caption-top">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Placa</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Cor</th>
+        <th scope="col">Cliente</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of this.dataSource">
+        <td>{{ i.placa | uppercase }}</td>
+        <td>{{ i.marca }}</td>
+        <td>{{ i.modelo }}</td>
+        <td>{{ i.cor }}</td>
+        <td>{{ i.cliente.nome }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,99 @@
+<app-navbar> </app-navbar>
+
+<div class="titulo">
+  <h1>Registro de Entrada de Veículos</h1>
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    Cadastrar entrada
+  </button>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro de Entrada</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form [formGroup]="form">
+        <div class="modal-body">
+          <div class="form-group col-md-6">
+            <label for="cliente" class="form-label"> Cliente </label>
+            <input
+              class="form-control"
+              list="opcPlaca"
+              id="placa"
+              placeholder="Pesquisar Placa"
+            />
+
+            <datalist id="opcPlaca">
+              <option *ngFor="let i of this.dataCar">
+                  Placa: {{ i.placa | uppercase }} | (Cliente:
+                  {{ i.cliente.nome }} )
+              </option>
+            </datalist>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-dismiss="modal"
+            (click)="criarEntrada()"
+          >
+            Salvar
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="lista-cadastro">
+  <table class="table caption-top">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Data</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Cor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of this.dataSource">
+        <td scope="row">{{ i.dataEntrada }}</td>
+        <td>{{ i.horaEntrada }}</td>
+        <td>{{ i.carro['placa'] | uppercase }}</td>
+        <td>{{ i.carro['marca'] }}</td>
+        <td>{{ i.carro['modelo'] }}</td>
+        <td>{{ i.carro['cor'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

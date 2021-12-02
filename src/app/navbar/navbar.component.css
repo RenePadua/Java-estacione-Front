@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+header {
+  background-color: #373193;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+}
+
+#img-header {
+  width: 50px;
+  margin: 0 auto;
+  margin-left: 45%;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox']:checked ~ nav {
+  transform: translateX(350px);
+}
+
+.menu {
+  cursor: pointer;
+}
+
+nav {
+  background-color: #373193;
+  width: 250px;
+  height: 100%;
+  left: -380px;
+  position: fixed;
+  transition: all 0.5s;
+}
+
+nav a {
+  color: #fff;
+  width: 100%;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #100e31;
+  text-decoration: none;
+}
+
+label {
+  position: sticky;
+  z-index: 1;
+}
+
+label img {
+  width: 25px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+ul {
+  margin: 15px;
+  width: 100%;
+}
+
+li {
+  list-style: none;
+  font-size: 1.1rem;
+  margin: 20px 0;
+}
+
+#logo {
+  padding: 40px 0;
+}
+
+.logo {
+  color: #d2d1d1;
+  font-size: 27px;
+  margin-right: 10px;
+}
+
+i {
+  color: #fff;
+  margin: 0 10px 0 0;
+}
+
+/* HORÁRIO */
+
+.horario {
+  float: right;
+  margin: 5px;
+  font-size: 20px;
+}
+
+.hora {
+  font-family: 'Orbitron', Arial, Helvetica, sans-serif;
+}
+
+img{
+  width: 36px;   
+   margin-left: auto;
+   margin-right: auto;
+  }

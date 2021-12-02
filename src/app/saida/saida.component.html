@@ -1,0 +1,95 @@
+<app-navbar></app-navbar>
+
+<div class="titulo">
+<h1>Registro de Saída de Veículos</h1>
+
+<button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Cadastrar saída
+</button>
+</div>
+
+<div
+class="modal fade"
+id="exampleModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Registro de Saída</h5>
+      <button
+        type="button"
+        class="btn-close btn-close-white"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group col-md-6">
+        
+      <label for="placa" class="form-label"> Placa </label>
+      <input
+        class="form-control"
+        list="opcPlaca"
+        id="placa"
+        placeholder="Pesquisar Placa"
+      />
+
+      <datalist id="opcPlaca">
+        <option *ngFor="let i of this.dataSource">
+        <div *ngIf="(i.horaEntrada != null) && (i.horaSaida == null) ">
+        {{ i.carro.placa | uppercase }}
+         </div>
+        </option>
+      
+
+      </datalist>
+      </div>
+    </div>
+    <div class="modal-footer">
+    <button
+    type="button"
+    class="btn btn-success"
+    data-bs-dismiss="modal"
+    (click)="criarSaida()"
+  >
+    Salvar
+  </button>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="lista-cadastro">
+<table class="table caption-top">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col"> Placa </th>
+      <th scope="col"> Hora de Entrada</th>
+      <th scope="col"> Hora de Saída</th>
+      <th scope="col"> Valor </th>
+      <th scope="col"> Nome </th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let i of this.dataSource">
+  <td scope="row">{{ i.carro.placa | uppercase}}</td>
+  <td>{{ i.horaEntrada }}</td>
+  <td>{{ i.horaSaida }}</td>
+  <td>{{ i.preco | currency:'BRL' }}</td>
+  <td>{{ i.carro.cliente.nome }}</td>
+  
+
+  </tr>
+  </tbody>
+</table>
+</div>

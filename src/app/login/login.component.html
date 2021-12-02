@@ -1,0 +1,58 @@
+<body>
+  <div class="formulario">
+    <img
+      class="imagem-carro"
+      src="https://www.estimulacaoneurologica.com.br/wp-content/uploads/2021/03/estacionamento.png"
+      alt="Time"
+    />
+
+    <div class="container" *ngIf="!auth">
+      <div class="login">
+        <h1>Entrar</h1>
+        <form>
+          <div class="form-group">
+            <label for="login">Login</label>
+            <input
+              type="text"
+              class="form-control"
+              id="login"
+              aria-describedby="login"
+              placeholder="Digite o nome do usuário"
+              [(ngModel)]="login"
+              [ngModelOptions]="{standalone: true}"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="senha"> Senha </label>
+            <input
+              type="password"
+              class="form-control"
+              id="senha"
+              placeholder="Digite sua senha"
+              [(ngModel)]="senha"
+              [ngModelOptions]="{standalone: true}"
+            />
+          </div>
+        </form>
+        <button class="btn-primary" (click)="postLogin()"> Acessar</button>
+      </div>
+    </div>
+
+    <div class="container" *ngIf="auth">
+      <form>
+        <div>
+          <h1>Bem vindo(a), {{ login }}!</h1>
+          
+            <button class="btn-success" [routerLink]="['/entrada']">
+              Entrar
+            </button>
+          
+    
+            <input type="button" class="btn-danger" value="Sair" (click)="postLogout()" />
+          
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

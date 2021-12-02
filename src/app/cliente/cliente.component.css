@@ -1,0 +1,23 @@
+.titulo {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.btn-primary {
+  width: 50%;
+  margin: 20px;
+  padding: 10px;
+  background-color: #373193;
+  border: 1px solid #373193;
+  border-radius: 5px;
+}
+
+.lista-cadastro {
+  margin: 20px 30px;
+  text-align: center;
+}
+
+.modal-header {
+  background-color: #373193;
+  color: #fff;
+}
